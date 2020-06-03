@@ -21,6 +21,9 @@ gem 'kaminari'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'bootstrap-sass', '2.3.2.0'
+group :production do
+  gem 'pg','0.15.1'
+end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
