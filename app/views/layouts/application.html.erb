@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
+<%= stylesheet_link_tag "application", media: "all",
+"data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= render 'layouts/shim'%>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+<body>
+	<%= render 'layouts/header' %>
+ <header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="navbar-inner">
+		<div class="container">
+
+			<% flash.each do |key, value| %>
+				<div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
+
+
+			<%= link_to"Sample app",'#',id:"logo"%>
+			<nav>
+				<ul class="nav pull-right">
+					<li><%= link_to "Home",	home_path%></li>
+					<li><%= link_to "Help",	help_path%></li>
+					<li><%= link_to "Sign in",signin_path%></li>
+					<li><%= link_to "退出",	signout_path, method: "delete"%></li>
+					
+				</ul>
+			</nav>
+			
+		</div>
+		
+	</div> 	
+	<%= render 'layouts/shim'%>
+	<div class="container"> 
+		<%= yield%>		
+		<%= render 'layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
+	</div>
+  </header> 
+
+
+</body>
+</html>
